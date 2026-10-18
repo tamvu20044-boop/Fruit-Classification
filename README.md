@@ -28,25 +28,25 @@ This project implements a complete computer vision workflow for image classifica
 <p align="center">
   <img src="training_history.png" width="800" alt="Training History Curves">
 </p>
-* **Đánh giá:** Biểu đồ thể hiện quá trình hội tụ mượt mà của mô hình qua các epoch. Giá trị Training/Validation Loss giảm sâu ổn định đồng thời tỷ lệ Accuracy tăng trưởng tốt, chứng minh rằng cấu hình siêu tham số (learning rate, optimizer) và kiến trúc ConvNeXt-Tiny tương thích rất hiệu quả với bài toán mà không gặp hiện tượng quá khớp (overfitting) sớm.
+Biểu đồ thể hiện quá trình hội tụ mượt mà của mô hình qua các epoch. Giá trị Training/Validation Loss giảm sâu ổn định đồng thời tỷ lệ Accuracy tăng trưởng tốt, chứng minh rằng cấu hình siêu tham số (learning rate, optimizer) và kiến trúc ConvNeXt-Tiny tương thích rất hiệu quả với bài toán mà không gặp hiện tượng quá khớp (overfitting) sớm.
 
 ### 2. Feature Representation (t-SNE Clusters)
 <p align="center">
   <img src="tsne_feature_clusters.png" width="800" alt="t-SNE Feature Clusters">
 </p>
-* **Đánh giá:** Không gian đặc trưng ẩn (latent space) được chiếu xuống 2 chiều thông qua thuật toán t-SNE cho thấy khả năng gom nhóm (clustering) cực kỳ xuất sắc của ConvNeXt. Các điểm dữ liệu thuộc cùng một lớp (class) tạo thành các cụm tách biệt rõ rệt với khoảng cách biên an toàn lớn, chứng tỏ mạng đã học được các đặc trưng phân biệt (discriminative features) rất mạnh mẽ.
+Không gian đặc trưng ẩn (latent space) được chiếu xuống 2 chiều thông qua thuật toán t-SNE cho thấy khả năng gom nhóm (clustering) cực kỳ xuất sắc của ConvNeXt. Các điểm dữ liệu thuộc cùng một lớp (class) tạo thành các cụm tách biệt rõ rệt với khoảng cách biên an toàn lớn, chứng tỏ mạng đã học được các đặc trưng phân biệt (discriminative features) rất mạnh mẽ.
 
 ### 3. Classification Performance (Confusion Matrix)
 <p align="center">
   <img src="confusion_matrix.png" width="700" alt="Confusion Matrix">
 </p>
-* **Đánh giá:** Ma trận nhầm lẫn minh chứng cho độ chính xác phân loại đồng đều trên các lớp mục tiêu. Hầu hết các mẫu dự đoán tập trung dày đặc ở đường chéo chính, thể hiện tỷ lệ dự đoán đúng cao và ít xảy ra hiện tượng nhầm lẫn giữa các nhãn có hình ảnh tương đồng.
+Ma trận nhầm lẫn minh chứng cho độ chính xác phân loại đồng đều trên các lớp mục tiêu. Hầu hết các mẫu dự đoán tập trung dày đặc ở đường chéo chính, thể hiện tỷ lệ dự đoán đúng cao và ít xảy ra hiện tượng nhầm lẫn giữa các nhãn có hình ảnh tương đồng.
 
 ### 4. Convolutional Filter Visualization
 <p align="center">
   <img src="conv1_filters_visualization.png" width="600" alt="Conv1 Filters">
 </p>
-* **Đánh giá:** Hình ảnh trực quan hóa các bộ lọc (filters) ở lớp tích chập đầu tiên (`conv1`) hiển thị các pattern học được như bộ lọc dò biên (edge detectors), định hướng góc và gradient màu sắc. Điều này xác nhận rằng mô hình bắt đầu quá trình trích xuất thông tin thị giác cơ bản một cách chuẩn mực ngay từ tầng mạng nông nhất.<img width="1507" height="516" alt="training_history" src="https://github.com/user-attachments/assets/7ff411af-47bc-4f08-a922-b3364c3ad2d2" />
+Hình ảnh trực quan hóa các bộ lọc (filters) ở lớp tích chập đầu tiên (`conv1`) hiển thị các pattern học được như bộ lọc dò biên (edge detectors), định hướng góc và gradient màu sắc. Điều này xác nhận rằng mô hình bắt đầu quá trình trích xuất thông tin thị giác cơ bản một cách chuẩn mực ngay từ tầng mạng nông nhất.<img width="1507" height="516" alt="training_history" src="https://github.com/user-attachments/assets/7ff411af-47bc-4f08-a922-b3364c3ad2d2" />
 <img width="1048" height="653" alt="tsne_feature_clusters" src="https://github.com/user-attachments/assets/d599bf5c-d39f-47f4-b5ea-f0be665d8d45" />
 <img width="1053" height="713" alt="conv1_filters_visualization" src="https://github.com/user-attachments/assets/82b8a4ef-710e-44e0-9fc2-a3471a678b27" />
 <img width="818" height="697" alt="confusion_matrix" src="https://github.com/user-attachments/assets/f29d075f-87bb-49a3-9288-53fa0dc184ce" />
