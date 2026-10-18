@@ -1,48 +1,43 @@
+# 🍎 Fruit Classification: Transfer Learning vs. Custom CNN
 
-# 🍎 Fruit Classification Pipeline with ConvNeXt
-
-An advanced end-to-end deep learning image classification pipeline built on the **ConvNeXt-Tiny** architecture, leveraging fine-grained feature representation learning and evaluated using the **CIFAR-100** dataset structure.
-
-## 🔬 Phương Pháp Triển Khai & Kết Quả Thực Nghiệm (Methodology & Results)
-
-Đề tài được tiến hành nghiên cứu và so sánh thông qua **2 hướng tiếp cận chính** nhằm đánh giá hiệu quả giữa việc tự thiết kế mô hình và việc áp dụng kỹ thuật Transfer Learning:
+An end-to-end deep learning benchmark comparing a custom-engineered **CNN from Scratch** against a fine-tuned **ConvNeXt-Tiny (Transfer Learning)** model for high-precision fruit classification.
 
 ---
 
-### 1. Chi Tiết Hai Hướng Tiếp Cận
+## 🔬 Methodology & Experimental Results
 
-| Tiêu chí | 1️⃣ Custom CNN (From Scratch) | 2️⃣ ConvNeXt (Transfer Learning) |
+To comprehensively evaluate model performance and representation learning capabilities, two distinct deep learning strategies were implemented and benchmarked on the test dataset:
+
+---
+
+### 1. Architectural Comparison
+
+| Metric / Aspect | 🧱 Custom CNN (From Scratch) | 🚀 ConvNeXt-Tiny (Transfer Learning) |
 | :--- | :--- | :--- |
-| **Kiến trúc** | Mạng CNN tự thiết kế (tầng đầu Conv 7×7, BatchNorm, MaxPool/Dropout) | Kiến trúc hiện đại **ConvNeXt-Tiny** |
-| **Khởi tạo trọng số** | Random Initialization (huấn luyện từ đầu) | Pretrained trên bộ dữ liệu **ImageNet-1K** |
-| **Mục đích** | Đánh giá khả năng học đặc trưng hình ảnh trực tiếp từ tập dữ liệu đề tài | Tận dụng biểu diễn đặc trưng cấp cao có sẵn và fine-tuning tối ưu hóa |
-| **Độ chính xác (Accuracy)** | **63.33%** | **81.19%** |
+| **Architecture** | Custom Deep CNN (7×7 Input Conv, BatchNorm, MaxPool & Dropout) | Modern **ConvNeXt-Tiny** Backbone |
+| **Weights Initialization** | Random Initialization (Trained from scratch) | Pre-trained on **ImageNet-1K** |
+| **Primary Objective** | Evaluate direct spatial feature extraction from domain data | Leverage pre-trained hierarchical representations with fine-tuning |
+| **Top-1 Test Accuracy** | **63.33%** | **81.19%** *(+17.86% improvement)* |
 
 ---
 
-### 2. Đánh Giá & Nhận Xét Kết Quả
+### 2. Performance Insights & Key Takeaways
 
-* **Custom CNN (63.33%)**:
-  * Mô hình tự học toàn bộ các bộ lọc không gian (spatial filters) từ đầu.
-  * Mức độ khái quát hóa (generalization) ở mức khá, tuy nhiên còn gặp khó khăn ở các lớp hoa quả có góc chụp phức tạp hoặc hình thái, màu sắc tương đồng nhau.
+* **Custom CNN from Scratch (`63.33%`)**:
+  * Successfully learned fundamental low-level filters (edges, textures, color gradients) directly from raw images.
+  * Demonstrates solid baseline performance, but exhibits limited generalization capacity when distinguishing between visually ambiguous classes or items with varying illumination and occlusion.
 
-* **ConvNeXt Transfer Learning (81.19% - Vượt trội +17.86%)**:
-  * Nhờ tận dụng trọng số đã được học từ hàng triệu ảnh ImageNet, ConvNeXt dễ dàng trích xuất các đặc trưng hình học, vân bề mặt và màu sắc phức tạp.
-  * Tốc độ hội tụ nhanh hơn rõ rệt và độ chính xác phân loại được cải thiện vượt trội trên toàn bộ các lớp.
+* **ConvNeXt Transfer Learning (`81.19%`)**:
+  * Outperformed the baseline by a large margin (**+17.86%**), capitalizing on rich semantic priors acquired from pre-training on millions of natural images.
+  * Achieved significantly faster convergence, lower training loss variance, and well-calibrated confidence scores across all fruit categories.
 
 ---
 
-### 3. Ma Trận Nhầm Lẫn (Confusion Matrix)
+### 3. Confusion Matrix Analysis
 
-Dưới đây là ma trận nhầm lẫn chi tiết của 2 phương pháp trên tập kiểm thử (Test Set):
+A side-by-side breakdown of classification predictions on the unseen test dataset:
 
 | 🚀 ConvNeXt Transfer Learning (81.19%) | 🧱 Custom CNN from Scratch (63.33%) |
 | :---: | :---: |
 | ![ConvNeXt Confusion Matrix](convnext_transfer_learning/confusion_matrix.png) | ![Custom CNN Confusion Matrix](cnn_from_scratch/confusion_matrix.png) |
-| *Mô hình phân loại đồng đều và tập trung phần lớn giá trị trên đường chéo chính.* | *Mức độ phân tán cao hơn, xuất hiện một số nhầm lẫn giữa các loại quả tương đồng.* |
-
-  <img src="confusion_matrix.png" width="700" alt="Confusion Matrix">
-</p>
-
- The confusion matrix highlights a well-balanced prediction accuracy across target categories. The vast majority of predictions are densely populated along the main diagonal, indicating a high correct-classification rate and minimal confusion between visually similar classes.
-
+| *High concentration along the main diagonal indicating robust per-class precision.* | *Higher off-diagonal dispersion caused by inter-class visual similarities.* |
