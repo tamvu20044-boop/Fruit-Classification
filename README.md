@@ -3,41 +3,44 @@
 
 An advanced end-to-end deep learning image classification pipeline built on the **ConvNeXt-Tiny** architecture, leveraging fine-grained feature representation learning and evaluated using the **CIFAR-100** dataset structure.
 
----
+## 🔬 Phương Pháp Triển Khai & Kết Quả Thực Nghiệm (Methodology & Results)
 
-## 📌 Project Overview & Methodology
-This project implements a complete computer vision workflow for image classification, structured into several key phases:
-1. **Data Pipeline & Exploration:** Utilizing image data structured from CIFAR-100 (featuring challenging fine-grained categories and diverse object distributions) with robust preprocessing and augmentation.
-2. **Model Architecture (ConvNeXt):** Adopting **ConvNeXt**, a pure convolutional network modernized with design principles inspired by Vision Transformers (ViTs)—such as enlarged kernel sizes ($7\times7$), inverted bottlenecks, and GELU activations—balancing local inductive bias with high representational capacity.
-3. **Training Strategy:** Optimized using modern deep learning practices to steadily reduce loss and maximize classification accuracy across epochs.
-4. **Feature Analysis & Evaluation:** Going beyond standard metrics by extracting high-dimensional embeddings for **t-SNE clustering analysis**, inspecting **first-layer convolutional weights (`conv1`)**, generating **confusion matrices**, and tracking **training dynamics**.
+Đề tài được tiến hành nghiên cứu và so sánh thông qua **2 hướng tiếp cận chính** nhằm đánh giá hiệu quả giữa việc tự thiết kế mô hình và việc áp dụng kỹ thuật Transfer Learning:
 
 ---
 
-## 📂 Repository Structure
-* `fruit_classification_pipeline.ipynb`: Main Jupyter Notebook containing the full end-to-end pipeline (data loading, model setup, training, and evaluation).
-* `training_history.png`: Training loss and accuracy curves over epochs.
-* `tsne_feature_clusters.png`: t-SNE 2D projection visualizing how effectively the model clusters distinct classes.
-* `confusion_matrix.png`: Confusion matrix showcasing classification performance and class-wise predictions.
-* `conv1_filters_visualization.png`: Visual inspection of the learned weights in the first convolutional layer.
+### 1. Chi Tiết Hai Hướng Tiếp Cận
+
+| Tiêu chí | 1️⃣ Custom CNN (From Scratch) | 2️⃣ ConvNeXt (Transfer Learning) |
+| :--- | :--- | :--- |
+| **Kiến trúc** | Mạng CNN tự thiết kế (tầng đầu Conv 7×7, BatchNorm, MaxPool/Dropout) | Kiến trúc hiện đại **ConvNeXt-Tiny** |
+| **Khởi tạo trọng số** | Random Initialization (huấn luyện từ đầu) | Pretrained trên bộ dữ liệu **ImageNet-1K** |
+| **Mục đích** | Đánh giá khả năng học đặc trưng hình ảnh trực tiếp từ tập dữ liệu đề tài | Tận dụng biểu diễn đặc trưng cấp cao có sẵn và fine-tuning tối ưu hóa |
+| **Độ chính xác (Accuracy)** | **63.33%** | **81.19%** |
 
 ---
 
-## 📊 Results & Detailed Evaluation
+### 2. Đánh Giá & Nhận Xét Kết Quả
 
-### 1. Training Performance
-<img width="1012" height="310" alt="training_history_" src="https://github.com/user-attachments/assets/753efcf6-dcd2-49c6-abf2-a0b8a8a62fd7" />
- The curves illustrate a smooth convergence process across epochs. Both training and validation losses decrease steadily while accuracy increases consistently, demonstrating that the chosen hyperparameter settings (learning rate, optimizer) and the ConvNeXt-Tiny architecture fit the task efficiently without showing early signs of overfitting.
+* **Custom CNN (63.33%)**:
+  * Mô hình tự học toàn bộ các bộ lọc không gian (spatial filters) từ đầu.
+  * Mức độ khái quát hóa (generalization) ở mức khá, tuy nhiên còn gặp khó khăn ở các lớp hoa quả có góc chụp phức tạp hoặc hình thái, màu sắc tương đồng nhau.
 
-### 2. Feature Representation (t-SNE Clusters)
-<p align="center">
-  <img src="tsne_feature_clusters.png" width="800" alt="t-SNE Feature Clusters">
-</p>
+* **ConvNeXt Transfer Learning (81.19% - Vượt trội +17.86%)**:
+  * Nhờ tận dụng trọng số đã được học từ hàng triệu ảnh ImageNet, ConvNeXt dễ dàng trích xuất các đặc trưng hình học, vân bề mặt và màu sắc phức tạp.
+  * Tốc độ hội tụ nhanh hơn rõ rệt và độ chính xác phân loại được cải thiện vượt trội trên toàn bộ các lớp.
 
- The 2D t-SNE projection of the latent feature space reveals an exceptional clustering capability of the ConvNeXt backbone. Data points belonging to the same class form distinct, well-separated clusters with wide decision margins, confirming that the network has learned highly powerful discriminative features.
+---
 
-### 3. Classification Performance (Confusion Matrix)
-<p align="center">
+### 3. Ma Trận Nhầm Lẫn (Confusion Matrix)
+
+Dưới đây là ma trận nhầm lẫn chi tiết của 2 phương pháp trên tập kiểm thử (Test Set):
+
+| 🚀 ConvNeXt Transfer Learning (81.19%) | 🧱 Custom CNN from Scratch (63.33%) |
+| :---: | :---: |
+| ![ConvNeXt Confusion Matrix](convnext_transfer_learning/confusion_matrix.png) | ![Custom CNN Confusion Matrix](cnn_from_scratch/confusion_matrix.png) |
+| *Mô hình phân loại đồng đều và tập trung phần lớn giá trị trên đường chéo chính.* | *Mức độ phân tán cao hơn, xuất hiện một số nhầm lẫn giữa các loại quả tương đồng.* |
+
   <img src="confusion_matrix.png" width="700" alt="Confusion Matrix">
 </p>
 
