@@ -28,17 +28,20 @@ This project implements a complete computer vision workflow for image classifica
 <p align="center">
   <img src="training_history.png" width="800" alt="Training History Curves">
 </p>
-Biểu đồ thể hiện quá trình hội tụ mượt mà của mô hình qua các epoch. Giá trị Training/Validation Loss giảm sâu ổn định đồng thời tỷ lệ Accuracy tăng trưởng tốt, chứng minh rằng cấu hình siêu tham số (learning rate, optimizer) và kiến trúc ConvNeXt-Tiny tương thích rất hiệu quả với bài toán mà không gặp hiện tượng quá khớp (overfitting) sớm.
+
+ The curves illustrate a smooth convergence process across epochs. Both training and validation losses decrease steadily while accuracy increases consistently, demonstrating that the chosen hyperparameter settings (learning rate, optimizer) and the ConvNeXt-Tiny architecture fit the task efficiently without showing early signs of overfitting.
 
 ### 2. Feature Representation (t-SNE Clusters)
 <p align="center">
   <img src="tsne_feature_clusters.png" width="800" alt="t-SNE Feature Clusters">
 </p>
-Không gian đặc trưng ẩn (latent space) được chiếu xuống 2 chiều thông qua thuật toán t-SNE cho thấy khả năng gom nhóm (clustering) cực kỳ xuất sắc của ConvNeXt. Các điểm dữ liệu thuộc cùng một lớp (class) tạo thành các cụm tách biệt rõ rệt với khoảng cách biên an toàn lớn, chứng tỏ mạng đã học được các đặc trưng phân biệt (discriminative features) rất mạnh mẽ.
+
+ The 2D t-SNE projection of the latent feature space reveals an exceptional clustering capability of the ConvNeXt backbone. Data points belonging to the same class form distinct, well-separated clusters with wide decision margins, confirming that the network has learned highly powerful discriminative features.
 
 ### 3. Classification Performance (Confusion Matrix)
 <p align="center">
   <img src="confusion_matrix.png" width="700" alt="Confusion Matrix">
 </p>
-Ma trận nhầm lẫn minh chứng cho độ chính xác phân loại đồng đều trên các lớp mục tiêu. Hầu hết các mẫu dự đoán tập trung dày đặc ở đường chéo chính, thể hiện tỷ lệ dự đoán đúng cao và ít xảy ra hiện tượng nhầm lẫn giữa các nhãn có hình ảnh tương đồng.
+
+ The confusion matrix highlights a well-balanced prediction accuracy across target categories. The vast majority of predictions are densely populated along the main diagonal, indicating a high correct-classification rate and minimal confusion between visually similar classes.
 
