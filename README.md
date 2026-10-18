@@ -1,3 +1,4 @@
+
 # 🍎 Fruit Classification Pipeline with ConvNeXt
 
 An advanced end-to-end deep learning image classification pipeline built on the **ConvNeXt-Tiny** architecture, leveraging fine-grained feature representation learning and evaluated using the **CIFAR-100** dataset structure.
@@ -25,10 +26,7 @@ This project implements a complete computer vision workflow for image classifica
 ## 📊 Results & Detailed Evaluation
 
 ### 1. Training Performance
-<p align="center">
-  <img src="training_history.png" width="800" alt="Training History Curves">
-</p>
-
+<img width="1012" height="310" alt="training_history_" src="https://github.com/user-attachments/assets/753efcf6-dcd2-49c6-abf2-a0b8a8a62fd7" />
  The curves illustrate a smooth convergence process across epochs. Both training and validation losses decrease steadily while accuracy increases consistently, demonstrating that the chosen hyperparameter settings (learning rate, optimizer) and the ConvNeXt-Tiny architecture fit the task efficiently without showing early signs of overfitting.
 
 ### 2. Feature Representation (t-SNE Clusters)
