@@ -1,3 +1,4 @@
+<img width="2000" height="1600" alt="confusion_counts" src="https://github.com/user-attachments/assets/25858e15-4cff-4318-8ef4-95c474995c28" />
 
 # 🍎 Fruit Classification: Transfer Learning vs. Custom CNN
 
