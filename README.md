@@ -5,9 +5,9 @@
 An end-to-end deep learning benchmark comparing a custom-engineered **CNN from Scratch** against a fine-tuned **ConvNeXt-Tiny (Transfer Learning)** model for high-precision fruit classification.
 
 ---
-# 🍎 Fruit Classification: Transfer Learning vs. Custom CNN
+# Data: CIFAR 100
 
-An end-to-end deep learning benchmark comparing a custom-engineered **CNN from Scratch** against a fine-tuned **ConvNeXt-Tiny (Transfer Learning)** model for high-precision fruit classification.
+Link: https://www.kaggle.com/datasets/fedesoriano/cifar100 
 
 ---
 ## 🔬 Methodology & Experimental Results
