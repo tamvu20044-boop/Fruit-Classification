@@ -39,11 +39,9 @@ To comprehensively evaluate model performance and representation learning capabi
 
 A side-by-side breakdown of classification predictions on the unseen test dataset:
 
-| 🚀 ConvNeXt Transfer Learning (85,79%) | 🧱 Custom CNN from Scratch (59,84%) |
-
-![ConvNeXt Confusion Matrix]
+🚀 ConvNeXt Transfer Learning (85,79%)  
 <img width="3000" height="2400" alt="confusion_counts" src="https://github.com/user-attachments/assets/932c2ace-2f72-4b4d-90c4-554247fd5a28" />
-![Custom CNN Confusion Matrix]
+🧱 Custom CNN from Scratch (59,84%)
 <img width="2000" height="1600" alt="confusion_counts" src="https://github.com/user-attachments/assets/5cd3706e-d04f-4ce9-b84f-5aab188baa60" />
 
 | *High concentration along the main diagonal indicating robust per-class precision.* | *Higher off-diagonal dispersion caused by inter-class visual similarities.* |
